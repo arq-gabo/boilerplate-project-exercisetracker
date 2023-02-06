@@ -46,9 +46,9 @@ app.post("/api/users", urlencodedParser, async (req, res, next) => {
         res.status(500).json({ error: err.message });
       }
     });
-    res.json({ username: newUser.username, _id: newUser._id });
+    res.status(201).json({ username: newUser.username, _id: newUser._id });
   } else {
-    res.json({ username: data_user.username, _id: data_user._id });
+    resstaus(200).json({ username: data_user.username, _id: data_user._id });
   }
 
   next();
