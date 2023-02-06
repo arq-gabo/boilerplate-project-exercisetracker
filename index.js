@@ -72,13 +72,13 @@ app.post(
 
       user_data.log.push(newExercise._id);
 
-      user_data.save((err, _) => {
+      await user_data.save((err, _) => {
         if (err) {
           res.status(500).json({ error: err.message });
         }
       });
 
-      newExercise.save((err, _) => {
+      await newExercise.save((err, _) => {
         if (err) {
           res.status(500).json({ error: err.message });
         }
