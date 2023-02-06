@@ -46,9 +46,9 @@ app.post("/api/users", urlencodedParser, async (req, res, next) => {
         res.status(500).json({ error: err.message });
       }
     });
-    res.status(201).json({ username: newUser.username, _id: newUser._id });
+    res.json({ username: newUser.username, _id: newUser._id });
   } else {
-    res.status(200).json({ username: data_user.username, _id: data_user._id });
+    res.json({ username: data_user.username, _id: data_user._id });
   }
 
   next();
@@ -129,7 +129,7 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       log: newLogs,
     });
   } catch (e) {
-    res.status(404).json({ error: "_id User not exist" });
+    res.status(404).json({ error: "_ id User not exist" });
   }
 
   next();
