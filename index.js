@@ -85,11 +85,11 @@ app.post(
       });
 
       res.status(202).json({
-        username: user_data.username,
-        description: newExercise.description,
-        duration: newExercise.duration,
-        date: new Date(newExercise.date).toDateString(),
         _id: user_data._id,
+        username: user_data.username,
+        date: new Date(newExercise.date).toDateString(),
+        duration: newExercise.duration,
+        description: newExercise.description,
       });
     }
 
