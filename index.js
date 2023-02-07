@@ -97,13 +97,9 @@ app.post(
   }
 );
 
-app.get("/api/users/:_id/logs", (req, res, next) => {
+app.get("/api/users/:_id/logs", async (req, res, next) => {
   // let from = !req.query.from ? "0000-01-01" : req.query.from;
   // let to = !req.query.to ? "9999-12-31" : req.query.to;
-
-  console.log(
-    `params: ${req.params._id} - from: ${req.query.from} - to: ${req.query.to} - limit: ${req.query.limit}`
-  );
 
   // try {
   //   let userData = await UsersModel.find({ _id: req.params._id })
