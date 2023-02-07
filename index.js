@@ -35,7 +35,7 @@ app.get("/api/users", async (req, res, next) => {
 
 // Endpoint for save new users
 app.post("/api/users", urlencodedParser, async (req, res, next) => {
-  let data_user = await UsersModel.findOne({ username: req.body.username });
+  let data_user = await UsersModel.findOne({ username: req.params.username });
 
   if (!data_user) {
     let newUser = await new UsersModel({
