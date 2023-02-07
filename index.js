@@ -98,6 +98,14 @@ app.post(
 );
 
 app.get("/api/users/:_id/logs", async (req, res, next) => {
+  UsersModel.findById(req.params._id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+    }
+  });
+
   // let from = !req.query.from ? "0000-01-01" : req.query.from;
   // let to = !req.query.to ? "9999-12-31" : req.query.to;
 
