@@ -59,7 +59,7 @@ app.post(
   "/api/users/:_id/exercises",
   urlencodedParser,
   async (req, res, next) => {
-    let user_data = await UsersModel.findById(req.body._id);
+    let user_data = await UsersModel.findById(req.params._id);
 
     if (!user_data) {
       res.status(404).json({ error: "_id User not exist" });
@@ -129,7 +129,7 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       log: newLogs,
     });
   } catch (e) {
-    res.status(404).json({ error: "_ id User not exist" });
+    res.status(404).json({ error: "_id User not exist" });
   }
 
   next();
