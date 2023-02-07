@@ -64,23 +64,23 @@ app.post(
     if (!user_data) {
       res.status(404).json({ error: "_id User not exist" });
     } else {
-      let newExercise = new ExerciseModel({
+      let newExercise = await new ExerciseModel({
         description: req.body.description,
         duration: req.body.duration,
         date: req.body.date === "" ? new Date() : req.body.date,
       });
 
-      user_data.log.push(newExercise._id);
+      await user_data.log.push(newExercise._id);
 
       await user_data.save((err, _) => {
         if (err) {
-          res.status(500).json({ error: err.message });
+          console.log(err);
         }
       });
 
       await newExercise.save((err, _) => {
         if (err) {
-          res.status(500).json({ error: err.message });
+          console.log(err);
         }
       });
 
@@ -126,8 +126,7 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       log: newLogs,
     });
   } catch (e) {
-    console.log(e.message);
-    //res.status(404).json({ error: "_id User not exist" });
+    res.status(404).json({ error: "_id User not exist" });
   }
   next();
 });
