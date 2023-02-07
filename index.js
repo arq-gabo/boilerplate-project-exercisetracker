@@ -97,40 +97,45 @@ app.post(
   }
 );
 
-app.get("/api/users/:_id/logs", async (req, res, next) => {
-  let from = !req.query.from ? "0000-01-01" : req.query.from;
-  let to = !req.query.to ? "9999-12-31" : req.query.to;
+app.get("/api/users/:_id/logs", (req, res, next) => {
+  // let from = !req.query.from ? "0000-01-01" : req.query.from;
+  // let to = !req.query.to ? "9999-12-31" : req.query.to;
 
-  try {
-    let userData = await UsersModel.find({ _id: req.params._id })
-      .populate({
-        path: "log",
-        select: "-_id -__v",
-        match: { date: { $gte: from, $lte: to } },
-        limit: req.query.limit,
-        options: {
-          sort: { date: -1 },
-        },
-      })
-      .select("-__v");
+  console.log(
+    `params: ${req.params._id} - from: ${req.query.from} - to: ${req.query.to} - limit: ${req.query.limit}`
+  );
 
-    let newLogs = await userData[0].log.map((val) => {
-      return {
-        description: val.description,
-        duration: val.duration,
-        date: new Date(val.date).toDateString(),
-      };
-    });
+  // try {
+  //   let userData = await UsersModel.find({ _id: req.params._id })
+  //     .populate({
+  //       path: "log",
+  //       select: "-_id -__v",
+  //       match: { date: { $gte: from, $lte: to } },
+  //       limit: req.query.limit,
+  //       options: {
+  //         sort: { date: -1 },
+  //       },
+  //     })
+  //     .select("-__v");
 
-    res.status(200).json({
-      _id: userData[0]._id,
-      username: userData[0].username,
-      count: newLogs.length,
-      log: newLogs,
-    });
-  } catch (e) {
-    res.status(404).json({ error: "_id User not exist" });
-  }
+  //   let newLogs = await userData[0].log.map((val) => {
+  //     return {
+  //       description: val.description,
+  //       duration: val.duration,
+  //       date: new Date(val.date).toDateString(),
+  //     };
+  //   });
+
+  //   res.status(200).json({
+  //     _id: userData[0]._id,
+  //     username: userData[0].username,
+  //     count: newLogs.length,
+  //     log: newLogs,
+  //   });
+  // } catch (e) {
+  //   console.log(e.message);
+  //   //res.status(404).json({ error: "_id User not exist" });
+  // }
 
   next();
 });
