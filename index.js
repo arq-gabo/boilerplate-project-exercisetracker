@@ -113,12 +113,7 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       })
       .select("-__v");
 
-    res.status(200).json({
-      _id: userData._id,
-      username: userData.username,
-      count: userData.log.length,
-      log: userData.log,
-    });
+    res.status(200).json(userData);
 
     //   .populate({
     //     path: "log",
