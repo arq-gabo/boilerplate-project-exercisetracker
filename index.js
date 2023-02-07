@@ -38,7 +38,7 @@ app.post("/api/users", urlencodedParser, async (req, res, next) => {
   let data_user = await UsersModel.findOne({ username: req.body.username });
 
   if (!data_user) {
-    let newUser = new UsersModel({
+    let newUser = await new UsersModel({
       username: req.body.username,
     });
     await newUser.save((err, _) => {
