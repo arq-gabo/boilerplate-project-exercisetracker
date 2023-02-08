@@ -113,31 +113,14 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       })
       .select("-__v");
 
-    res.status(200).json(userData);
-
-    //   .populate({
-    //     path: "log",
-    //     select: "-_id -__v",
-    //     match: { date: { $gte: from, $lte: to } },
-    //     limit: req.query.limit,
-    //     options: {
-    //       sort: { date: -1 },
-    //     },
-    //   })
-    //   .select("-__v");
-    // let newLogs = await userData[0].log.map((val) => {
-    //   return {
-    //     description: val.description,
-    //     duration: val.duration,
-    //     date: new Date(val.date).toDateString(),
-    //   };
-    // });
-    // res.status(200).json({
-    //   _id: userData[0]._id,
-    //   username: userData[0].username,
-    //   count: newLogs.length,
-    //   log: newLogs,
-    //});
+    res
+      .status(200)
+      .json({
+        _id: userData._id,
+        username: userData.username,
+        count: userData.log.length,
+        log: userData.log,
+      });
   } catch (e) {
     res.status(404).json({ error: "_id User not exist" });
   }
