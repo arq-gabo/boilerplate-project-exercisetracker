@@ -113,14 +113,20 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       })
       .select("-__v");
 
-    res
-      .status(200)
-      .json({
-        _id: userData._id,
-        username: userData.username,
-        count: userData.log.length,
-        log: userData.log,
-      });
+    let newLog = userData.log.map((val) => {
+      return {
+        description: val.description,
+        duration: val.duration,
+        date: new Date(val.date).toDateString(),
+      };
+    });
+
+    res.status(200).json({
+      _id: userData._id,
+      username: userData.username,
+      count: userData.log.length,
+      log: newLog,
+    });
   } catch (e) {
     res.status(404).json({ error: "_id User not exist" });
   }
