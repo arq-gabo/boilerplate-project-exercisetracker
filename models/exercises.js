@@ -11,6 +11,7 @@ let ExercisesSchema = mongoose.Schema({
   },
   date: {
     type: Date,
+    default: Date.now,
   },
 });
 

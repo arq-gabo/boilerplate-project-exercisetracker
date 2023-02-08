@@ -67,7 +67,7 @@ app.post(
       let newExercise = await new ExerciseModel({
         description: req.body.description,
         duration: req.body.duration,
-        date: req.body.date === "" ? new Date() : req.body.date,
+        date: req.body.date,
       });
 
       await user_data.log.push(newExercise._id);
