@@ -113,7 +113,7 @@ app.get("/api/users/:_id/logs", async (req, res, next) => {
       })
       .select("-__v");
 
-    let newLog = userData.log.map((val) => {
+    let newLog = await userData.log.map((val) => {
       return {
         description: val.description,
         duration: val.duration,
