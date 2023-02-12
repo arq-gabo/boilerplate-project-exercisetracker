@@ -48,7 +48,7 @@ https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices
 
 [https://boilerplate-project-exercisetracker-omsy.onrender.com/api/users](https://boilerplate-project-exercisetracker-omsy.onrender.com/api/users)
 
-- If you want to see the exercises associated with a user, type this url
+- If you want to see the exercises associated with a user, type this url with optionals query
 
 https://boilerplate-project-exercisetracker-omsy.onrender.com/api/users/:_id/logs?from=2000-01-01&to=2020-12-31&limit=2
 
