@@ -14,8 +14,7 @@ https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices
 
 - Require Node.js version 16.15.1
 
-1. Clone the project from [GitHub Repository](https://github.com/arq-gabo/boilerplate-project-exercisetracker)
-
+1. Clone the project
 2. `npm install` - for install dependency
 3. `npm run dev` - for run development enviroment
 4. `npm run start` - for run production enviroment
@@ -67,8 +66,6 @@ https://boilerplate-project-exercisetracker-omsy.onrender.com/api/users/:_id/log
 &nbsp;
 
 #### [View Demo](https://boilerplate-project-exercisetracker-omsy.onrender.com/)
-
-#### [Check Repository Code](https://github.com/arq-gabo/boilerplate-project-exercisetracker)
 
 &nbsp;
 
